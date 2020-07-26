@@ -1,7 +1,24 @@
 // pull express
 const express = require('express');
 const bodyParser = require('body-parser');
+// mysql
+const mysql = require('mysql2');
 
+// connection to mysql
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '0223407Jv',
+    database: 'todo' //dont have this yet
+   });
+
+//    red flag
+   try {
+    connection.connect();
+   } catch (e) {
+    console.log('Oops. Connection to MySQL failed.');
+    console.log(e);
+   }
 
 // api
 const api = express();
@@ -23,9 +40,15 @@ api.listen(3000, () => {
 // post route api
 api.post('/add', (req, res) => {
     console.log(req.body);
-    res.send('It works!');
+    
+    connection.query('INSERT INTO tasks (description) VALUES (?)', [req.body.item], (error, results) => {
+     if (error) return res.json({ error: error });
+   connection.query('SELECT LAST_INSERT_ID() FROM tasks', (error, results) => {
+      if (error) return res.json({ error: error });
+   console.log(results);
+     });
+    });
    });
-
 //   middleware use
 //   api.use((req, res, next) => {
 //     console.log('Hello');
