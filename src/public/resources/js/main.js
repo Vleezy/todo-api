@@ -52,7 +52,7 @@ req.addEventListener('load', () => {
   });
 
 req.addEventListener('error', () => {
-    console.log('Shit, something bad happened.');
+    console.log('something bad happened.');
     console.log(e);
   });
 }
@@ -84,7 +84,7 @@ req.addEventListener('load', () => {
 });
 
 req.addEventListener('error', () => {
-  console.log('Shit, something bad happened.');
+  console.log('something bad happened.');
   console.log(e);
 });
 
@@ -135,7 +135,7 @@ req.addEventListener('load', () => {
   });
 
 req.addEventListener('error', () => {
-    console.log('Shit, something bad happened.');
+    console.log('something bad happened.');
     console.log(e);
   });
 }
@@ -154,7 +154,7 @@ function getTasks(callback) {
   });
 
 req.addEventListener('error', () => {
-    console.log('Shit, something bad happened.');
+    console.log('something bad happened.');
     console.log(e);
   });
 }
